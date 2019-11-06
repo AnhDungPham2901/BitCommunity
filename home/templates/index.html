@@ -1,0 +1,326 @@
+{% extends "base.html" %} 
+{% block content %}
+<br>
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+    
+    .head_text {
+        color: white;
+    }
+    
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+<!-- <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class=" site-heading my-4 mt-3 text-white"> Chào Mừng Đến Với Gia Đình BIT</h3>
+                    <p class="text-light">We Love Bit As much as you do..! &nbsp
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    {% load static %}
+</header>
+<header class="header">
+       <!--  <div class="header__logo-box">
+            <img src="./img/logooutline.png" class="header__logo" alt="logo">
+        </div> -->
+        <div class="header__text-box">
+            <h3 class="heading-primary">
+                <span class="heading-primary--main">
+                    Khoa CNTTKD
+                </span>
+                <span class="heading-primary--sub">
+                    là một gia đình
+                </span>
+            </h3>
+            <a href="#" class="btn btn--white btn--animated">Cùng nhau khám phá</a>
+        </div>
+    </header>
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body" style="padding-left: 10px;">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6">{{ post.Author }} | {{ post.created_on}} </p>
+                    <p class="card-text">{{post.content|slice:":200" }}</p>
+                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Xem Thêm &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% block sidebar %} {% endblock sidebar %}
+        
+
+    </div>
+</div>
+
+    <main>
+        <section class="section-about">
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 id="gioithieu" class="heading-secondary">
+                    Giới thiệu
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-1-of-2">
+                    <h3 class="heading-tertiary u-margin-bottom-small">
+                        Khoa Công Nghệ Thông Tin Kinh Doanh
+                    </h3>
+                    <p class="paragraph">
+                        Được thành lập vào năm 1978, khoa BIT tự hào có bề dày lịch sử, kinh nghiệm và giảng dạy trong lĩnh vực công nghệ cho kinh tế. Với xu thế công nghệ dẫn đầu, khoa BIT là mũi nhọn phát triển của trường đại học Kinh Tế Tp Hồ Chí Minh.Đội ngũ giảng viên trẻ trung, giàu kinh nghiệm là một trong những điểm mạnh của khoa.
+                    </p>
+                    <h3 class="heading-tertiary u-margin-bottom-small">
+                        Thông tin chi tiết
+                    </h3>
+                    <p class="paragraph">
+                       để xem thông tin chi tiết vui lòng nhấp vào nút bên dưới.
+                    </p>
+                    <a href="http://bit.ueh.edu.vn/" class="btn-text">Tìm hiểu thêm &rarr;</a>
+                </div>
+                <div class="col-1-of-2">
+                    <div class="composition">
+                        <img src="{% static 'img/erp.jpg' %}" alt="photo1"
+                            class="composition__photo composition__photo--p1">
+                        <img src="{% static 'img/cnpm.jpg' %}" alt="photo2"
+                            class="composition__photo composition__photo--p2">
+                        <img src="{% static 'img/mis.jpg' %}" alt="photo3"
+                            class="composition__photo composition__photo--p3">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-skills">
+            <div class="row">
+                <div class="col-1-of-4">
+                    <div class="skill-box">
+                        <i class=" skill-box__icon fas fa-globe-americas"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Hệ thống thông tin kinh doanh</h3>
+                        <div class="skill-box__text">
+                            Nhu cầu xã hội Hiện nay, ứng dụng công nghệ trong điều hành doanh nghiệp đang được các nhà quản trị quân tâm. Thành công của một doanh nghiệp với các mục tiêu đặt ra liên quan nhiều đến quyết định...
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-of-4">
+                    <div class="skill-box">
+                        <i class=" skill-box__icon fas fa-book-open"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Thương mại diện tử</h3>
+                        <div class="skill-box__text">
+                            Nhu cầu xã hội Ngành Thương mại điện tử (TMĐT) tại Việt Nam hiện nay đang có những bước tăng trưởng mạnh mẽ và ngày càng đóng góp nhiều hơn cho sự phát triển kinh tế xã hội của đất nước....
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-of-4">
+                    <div class="skill-box">
+                        <i class=" skill-box__icon fas fa-users"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Công nghệ phần mềm</h3>
+                        <div class="skill-box__text">
+                            Nhu cầu xã hội Cách mạng công nghiệp 4.0 giúp công nghệ thông tin và viễn thông (ICT) xâm nhập mọi mặt đời sống kinh tế xã hội. ICT vì thế mà dần trở thành một trong những mũi nhọn chiến...
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-of-4">
+                    <div class="skill-box">
+                        <i class=" skill-box__icon fas fa-hourglass-half"></i>
+                        <h3 class="heading-tertiary u-margin-bottom-small">Hoạch định nguồn lực ERP</h3>
+                        <div class="skill-box__text">
+                            Nhu cầu xã hội Hoạch định các nguồn lực một cách hiệu quả để nhắm đến mục tiêu giảm chi phí, tăng sức cạnh tranh là một vấn đề mà mọi doanh nghiệp luôn phải đối mặt, nhất là trong thời...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-courses" id="section-courses">
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 id = "lienhe" class="heading-secondary">
+                    Liên hệ
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-1-of-3">
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--1">
+                                &nbsp;
+                                <!--- KÍ TỰ RỖNG TRONG HTML -->
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--1">
+                                    Fanpage <br> Khoa BIT
+                                </span>
+
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>Bạn có thể nhắn tin bất cứ lúc nào</li>
+                                    <li>Giảng viên tận tình giải đáp thắc mắc của bạn</li>
+                                    <li></li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="card__side card__side--back card__side--back-1">
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">
+                                        BIT-UEH Community
+                                    </p>
+                                    <p class="card__price-value">
+                                        
+                                    </p>
+                                    <a href="https://www.facebook.com/groups/UEH.BIT/" class="btn btn--white">Liên hệ</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-1-of-3">
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--2">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--2">
+                                    Email <br> Khoa BIT
+                                </span>
+
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>Phản hồi nhanh</li>
+                                    <li>Phản hồi chi tiết</li>
+                                    <li></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="card__side card__side--back card__side--back-2">
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">
+                                       bit@ueh.edu.vn
+                                    </p>
+                                    <p class="card__price-value">
+                                    
+                                    </p>
+                                    <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJTJGGlmlnlSBfXpmQqSzwHndqHVFCTWSmPvttBVqpmcwVZRSgKxKXqtCpscvQSSXhcVpLV" class="btn btn--white">Liên hệ</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-1-of-3">
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--3">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--3">
+                                    SĐT<br> Ban chủ nhiệm khoa
+                                </span>
+
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>Được hỗ trợ trực tiếp từ BCN khoa</li>
+                                    <li>Gặp ngay BCN khoa khi cần gấp</li>
+                                    <li></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="card__side card__side--back card__side--back-3">
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">
+                                        +84-283-526-5816
+                                    </p>
+                                    <p class="card__price-value">
+                                        
+                                    </p>
+                                    <a href="#lienhe" class="btn btn--white">Liên hệ</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="u-center-text">
+                <a href="#lienhe" class="btn btn--blue">Liên hệ</a>
+            </div>
+        </section>
+
+        <section class="section-testimonials">
+            <!--add this--><div class="bg-video">
+                <!--add this--><video class="bg-video__content" autoplay muted loop>
+                <!--add this-->    <source src="{% static 'img/Boulevard.mp4' %}" type="video/mp4">
+                <!--add this-->    <source src=" {% static 'img/Boulevard.webm' %}" type="video/webm">
+                <!--add this-->   Your browser is not supported
+            <!--add this--></video>
+            </div>
+            <div class="u-center-text u-margin-bottom-big">
+                <h2 class="heading-secondary">
+                    Nhóm Phát Triển
+                </h2>
+            </div>
+            <div class="row">
+                <div class="testimonial">
+                    <figure class="testimonial__shape">
+                        <img src="{% static 'img/person1.jpg' %}" class="testimonial__img" alt="photo1">
+                        <figcaption class="testimonial__caption">
+                            Tố Quyên
+                        </figcaption>
+                    </figure>
+                    <div class="testimonial__text">
+                        <h3 class="heading-tertiary u-margin-bottom-small">
+                            Nguyễn Huỳnh Tố Quyên
+                        </h3>
+                        <p>
+                            Lớp trưởng lớp BI002 và là một thành viên tích cực trong công tác đoàn hội. Phát triển hệ thống là một trong những niềm đam mê của tôi, và đặc biệt là một hệ thống nhằm kết nối những sinh viên trong khoa thành một tập thể gắn kết.
+                        </p>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <figure class="testimonial__shape">
+                        <img src="{% static 'img/person2.jpg' %}" class="testimonial__img" alt="photo2">
+                        <figcaption class="testimonial__caption">
+                            Hiểu Văn
+                        </figcaption>
+                    </figure>
+                    <div class="testimonial__text">
+                        <h3 class="heading-tertiary u-margin-bottom-small">
+                            Lý Hiểu Văn
+                        </h3>
+                        <p>
+                            Thành viên lớp BI002.Phát triển hệ thống là một trong những niềm đam mê của tôi, và đặc biệt là một hệ thống nhằm kết nối những sinh viên trong khoa thành một tập thể gắn kết. 
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </main>
+</body>
+{%endblock%}

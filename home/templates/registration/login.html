@@ -1,0 +1,12 @@
+<!-- templates/registration/login.html -->
+{% load static %}
+<img style="width: 100%; height: 90%;" alt="" src="{% static 'img/technology2.jpg' %}"/>
+
+<div align="center">
+<h2 style="text-align: center;">Đăng Nhập</h2>
+<form method="post" style="align:center">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Đăng Nhập</button>
+</form>
+</div>

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %} 
+{% block content %}
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("{% static 'img/background1.jpg' %}");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+<body>
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Chợ BIT</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
+    <span class="w3-large">Hãy cùng nhau mua bán và chia sẻ những món hàng đầy thú vị và bất ngờ nhé!</span>
+    <p><a href="#about" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Bắt Đầu</a></p>
+  </div> 
+  <div class="w3-display-bottomleft w3-text-grey w3-large" style="padding:24px 48px">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h3 class="w3-center">HÃY LỰA CHỌN NHỮNG GÌ BẠN MUỐN</h3>
+  <p class="w3-center w3-large">Những gì sinh viên cần nơi đây sẽ có những thứ đó</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large"><button><a href="{% url 'chobit' %}">Mua</a> </button></p>
+      <p>Với những sản phẩm giá cả phù hợp chất lượng tốt, hi vọng sẽ mang lại cho bạn sự hài lòng nhất có thể</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large"><button><a href="{% url 'ban' %}">Bán</a> </button></p>
+      <p>Bạn có thể bán những vật dụng mà bạn không sử dụng nữa, những những sinh viên khác thì rất cần. Cộng đồng rất mong chờ bạn mang đến những món hàng đặc biệt</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large"><button><a href="{% url 'traodoi' %}">Trao Đổi</a> </button></p>
+      <p>Bạn có thể có được những món hàng mà bạn mong muốn mà không cần phải tốn tiền, chỉ cần mang lại giá trị khác cho họ, bạn sẽ nhận được món hàng xứng đáng</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large"><button><a href="{% url 'chiase' %}">Chia Sẻ</a> </button></p>
+      <p>Chia sẻ là một nghĩa cử cao đẹp, hãy để nghĩa cử ấy lan tỏa khắp cộng đồng BIT thân yêu của chúng ta</p>
+    </div>
+  </div>
+</div>
+
+<!-- Promo Section - "We know design" -->
+<!-- <div class="w3-container w3-light-grey" style="padding:128px 16px">
+  <div class="w3-row-padding">
+    <div class="w3-col m6">
+      <h3>We know design.</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore.</p>
+      <p><a href="#work" class="w3-button w3-black"><i class="fa fa-th"> </i> View Our Works</a></p>
+    </div>
+    <div class="w3-col m6">
+      <img class="w3-image w3-round-large" src="/w3images/phone_buildings.jpg" alt="Buildings" width="700" height="394">
+    </div>
+  </div>
+</div> -->
+
+
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>
+</html>
+{% endblock content %}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+       {% load static %}
+        <title>Bit Community</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+        <meta name="google" content="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous" />
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <!--Add this-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+        <!--Add this-->
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <!--Add this-->
+        {% block stylesheet %}{% endblock stylesheet %}
+
+    </head>
+
+    <body>
+        <style>
+            body {
+            font-family: "Roboto", sans-serif;
+            font-size: 17px;
+            background-color: #fdfdfd;
+        }
+        .shadow {
+            box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+        }
+        .btn-danger {
+            color: #fff;
+            background-color: #f00000;
+            border-color: #dc281e;
+        }
+        .masthead {
+            background: #3398E1;
+            height: auto;
+            padding-bottom: 15px;
+            box-shadow: 0 16px 48px #E3E7EB;
+            padding-top: 10px;
+        }
+        * {
+  margin: 0;
+  padding: 0;
+}
+ 
+/*==Style cơ bản cho website==*/
+body {
+  font-family: sans-serif;
+  color: #333;
+}
+ 
+/*==Style cho menu===*/
+#menu ul {
+  background: #1F568B;
+  list-style-type: none;
+  text-align: center;
+  z-index: 10;
+}
+#menu li {
+  color: #f1f1f1;
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: -5px;
+}
+#menu a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+#menu a:hover {
+  background: #F1F1F1;
+  color: #333;
+}
+/*==Dropdown Menu==*/
+.sub-menu li {
+  display: none;
+}
+#menu li {
+ position: relative;
+}
+.sub-menu {
+ display: none;
+ position: absolute;
+}
+#menu li:hover .sub-menu {
+ display: block;
+}
+.sub-menu li {
+ margin-left: 0 !important;
+}
+
+
+--mingti--
+      
+    </style>
+        {% if user.is_authenticated %}
+          <strong style="float: right;">Xin Chào {{ user.username }}!</strong> <br>
+          <p style="float:right;"><a href="{% url 'logout' %}">Đăng Xuất</a></p>
+        {% else %}
+          <a style="float: right;" href="{% url 'login' %}">Đăng Nhập</a>
+        {% endif %}
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
+            <!-- <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}">HOME</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="#gioithieu">Giới Thiệu </a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="#lienhe">Liên Hệ</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'workshop' %}">Góc Học Tập</a>
+                        </li>
+                        <li class="nav-item text-black">
+                            <a class="nav-link text-black font-weight-bold" href="{% url 'chobit' %}">Chợ BIT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div> -->
+
+            <div id="menu">
+              <ul>
+                <li><a href="{% url 'home' %}">Trang chủ</a></li>
+                <li><a href="#gioithieu">Giới Thiệu</a></li>
+                <li><a href="#lienhe">Liên Hệ</a></li>
+                <li><a href="#lienhe">Góc Học Tập</a>
+                  <ul class="sub-menu">
+                    <li><a href="{% url 'mentormentee' %}">Mentoring</a></li>
+                    <li><a href="{% url 'workshop' %}">Workshop</a></li>
+                  </ul>
+                </li>
+                <li><a href="{% url 'prechobit' %}">Chợ BIT</a></li>
+                <li><a href="{% url 'trangcanhan' %}">Trang Cá Nhân</a></li>
+              </ul>
+            </div>
+
+        </nav>
+    
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+        <!-- Footer -->
+        <footer class="py-3 bg-grey">
+           <!--  <p class="m-0 text-dark text-center ">Copyright &copy; Django Central</p> -->
+        </footer>
+    </body>
+</html>
